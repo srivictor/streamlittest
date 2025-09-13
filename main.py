@@ -1,29 +1,39 @@
-import streamlit as st
-from streamlit_card import card
+import streamlit as st 
 
-# Dos columnas con ancho 1:1
-col1, col2 = st.columns(2)
+st.sidebar.title('This is a sidebar')
+st.sidebar.write('You can place element here like sliders, buttons, and text')
+
+sidebar_input = st.sidebar.text_input("Enter something")
+
+#Tabs layout
+
+tab1, tab2, tab3 = st.tabs(['TAB 1', 'TAB 2', 'TAB 3'])
+
+with tab1:
+    st.write('this is the TAB 1')
+
+with tab2:
+    st.write('this is the TAB 2')
+
+with tab3:
+    st.write('this is the TAB 3')
+
+col1, col2, = st.columns(2)
 
 with col1:
-    card(
-        title="Ejemplo 1",
-        text="Esto ya viene con borde y sombra",
-        url="https://streamlit.io"
-    )
-    card(
-        title="Ejemplo 2",
-        text="Otro card dentro de la misma columna",
-        url="https://streamlit.io"
-    )
+    st.header('COLUMNA 1')
+    st.write('content for column 1')
 
 with col2:
-    card(
-        title="Ejemplo 3",
-        text="Card en la segunda columna",
-        url="https://streamlit.io"
-    )
-    card(
-        title="Ejemplo 4",
-        text="Otro más en col2",
-        url="https://streamlit.io"
-    )
+    st.header('COLUMNA 2')
+    st.write('content for column 2')
+
+
+placeholder = st.empty()
+placeholder.write("This is a emply placeholder, usful for dinamyc contecnt")
+
+if st.button('Update Placeholder'):
+    placeholder.write("Placeholder UPDATED")
+
+with st.expander("Expand for more details"):
+    st.write("Las cosas mas tribiales se vuelven fundamentales")
